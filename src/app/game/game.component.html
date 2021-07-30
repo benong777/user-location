@@ -1,0 +1,27 @@
+<!-- Add player -->
+<input  type="text"  class="form-control"
+        *ngIf="gameStarted===0"
+        placeholder="Name"
+        [(ngModel)]="playerName">
+<br>
+<button class="btn btn-primary btn-sm mr-5"
+        *ngIf="gameStarted===0"
+        (click)="onAddPlayer()">Add player
+</button>
+
+<button class="btn btn-primary btn-sm"
+        *ngIf="gameStarted===0"
+        [disabled]="!players.length"
+        (click)="onStartGame()">Start Game</button>
+
+<button class="btn btn-primary btn-sm"
+        *ngIf="gameStarted===1"
+        (click)="onEndGame()">End Game</button>
+
+<button class="btn btn-danger btn-sm"
+        *ngIf="players.length"
+        (click)="onReset()">RESET
+</button>
+
+
+
