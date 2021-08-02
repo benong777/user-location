@@ -7,17 +7,12 @@ import { Players } from '../interface/players';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  currHole = 1;
   gameStarted: number = 0;
-  playerName: string = '';
+  gameEnded: number = 0;
   newPlayerName: string = '';
   players: Players[] = [];
-  // players = [
-  //   { 
-  //     name: '',
-  //     total: 0,
-  //     h1: 0, h2: 0, h3: 0
-  //   }
-  // ];
+  arrayOfZeros: number[] = [];
 
   constructor() { }
 
@@ -25,26 +20,52 @@ export class GameComponent implements OnInit {
   }
   
   onAddPlayer() {
+      this.arrayOfZeros = new Array(18).fill(0);
       this.players.push({
           name:  this.newPlayerName,
           total:  0,
-          h1: 0, h2: 0, h3: 0
+          hole: this.arrayOfZeros 
       });
+      // console.log(this.arrayOfZeros);
+      this.newPlayerName = '';
   }
 
   onStartGame() {
       this.gameStarted = 1;
-      console.log("Players length: " + this.players.length);
+      this.currHole = this.currHole;
+      this.gameEnded = 0;
+      //console.log("Players length: " + this.players.length);
   }
 
   onEndGame() {
     this.gameStarted = 0;
+    this.gameEnded = 1;
   }
 
   onReset() {
-    console.log("RESET Length: " + this.players.length);
     this.players = [];
-    console.log("RESET Length: " + this.players.length);
+    this.gameStarted = 0;
+    this.gameEnded = 0;
+    this.currHole = 1;
+  }
+
+  onIncrement(i: number) {
+    this.players[i].hole[this.currHole] += 1;
+    this.players[i].total += 1;
+    console.log(this.players[i]);
+  }
+
+  onDecrement(i: number) {
+    if ((this.players[i].total>0 && this.players[i].hole[this.currHole]>0)) {
+      this.players[i].hole[this.currHole] -= 1;
+      this.players[i].total -= 1;
+    }
+  }
+
+  onNextHole() {
+    if (this.currHole >= 1 && this.currHole <17) {
+      this.currHole += 1;
+    }
   }
 
 }
