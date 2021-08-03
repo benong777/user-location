@@ -23,34 +23,44 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.currHole = this.dataService.currHole;
     this.gameStarted = this.dataService.gameStarted;
+
+    this.players = this.dataService.players;
     //this.gameEnded = this.dataService.gameEnded;
   }
   
+  // onAddPlayer() {
+  //     this.arrayOfZeros = new Array(18).fill(0);
+  //     this.players.push({
+  //         name:  this.newPlayerName,
+  //         total:  0,
+  //         hole: this.arrayOfZeros 
+  //     });
+  //     // console.log(this.arrayOfZeros);
+  //     this.newPlayerName = '';
+  // }
+
   onAddPlayer() {
-      this.arrayOfZeros = new Array(18).fill(0);
-      this.players.push({
-          name:  this.newPlayerName,
-          total:  0,
-          hole: this.arrayOfZeros 
-      });
-      // console.log(this.arrayOfZeros);
+      //this.arrayOfZeros = new Array(18).fill(0);
+      this.dataService.addPlayer(this.newPlayerName);
+      this.gameEnded = this.dataService.gameEnded; 
       this.newPlayerName = '';
+      console.log("GameEnded: " + this.gameEnded);
   }
 
   onStartGame() {
-      this.dataService.gameStarted = 1;
+      this.dataService.startGame();
       this.gameStarted = this.dataService.gameStarted;
-      // this.currHole = this.currHole;
       this.currHole = this.dataService.currHole;
-      this.gameEnded = 0;
-      //console.log("Players length: " + this.players.length);
+      this.gameEnded = this.dataService.gameEnded;
   }
 
   onEndGame() {
-    this.dataService.gameStarted = 0
+    this.dataService.endGame();
     this.gameStarted = this.dataService.gameStarted;
-    this.gameEnded = 1;
+    this.gameEnded = this.dataService.gameEnded;
     this.currHole = this.dataService.currHole;
+    // this.dataService.gameStarted = 0;
+    // this.dataService.gameEnded = 1;
   }
 
   onReset() {
@@ -62,10 +72,12 @@ export class GameComponent implements OnInit {
   }
 
   onIncrement(i: number) {
-    // this.players[i].hole[this.currHole] += 1;
-    this.players[i].hole[this.dataService.currHole] += 1;
-    this.players[i].total += 1;
-    //console.log(this.players[i]);
+    this.dataService.increment(i);
+
+    // // this.players[i].hole[this.currHole] += 1;
+    // this.players[i].hole[this.dataService.currHole] += 1;
+    // this.players[i].total += 1;
+    console.log(this.players[i]);
   }
 
   onDecrement(i: number) {

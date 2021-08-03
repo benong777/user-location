@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col d-flex justify-content-evenly">
             <button class="btn btn-primary btn-sm"
-                    *ngIf="gameStarted===0 && !gameEnded"
+                    *ngIf="gameStarted===0"
                     (click)="onAddPlayer()">Add player
             </button>
 
@@ -31,7 +31,7 @@
 <br>
 
 <!-- Display players -->
-<div class="currHoleContainer container border border-primary"
+<div class="currHoleContainer container border border-primary rounded border-3"
      *ngIf="players.length">
     <div class="row align-items-center pt-2">
         <div class="col text-center"
@@ -63,7 +63,7 @@
         <br><br><br>
 
         <!-- End of game display -->
-        <div class="col"
+        <div class="col text-center"
              *ngIf="gameEnded">{{ player.name }} </div>
         <div class="col text-center"
              *ngIf="gameEnded">{{ player.total }} </div>
