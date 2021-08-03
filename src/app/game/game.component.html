@@ -12,12 +12,12 @@
                     (click)="onAddPlayer()">Add player
             </button>
 
-            <button class="btn btn-primary btn-sm"
+            <button class="btn btn-success btn-sm"
                     *ngIf="gameStarted===0"
                     [disabled]="!players.length"
                     (click)="onStartGame()">Start Game</button>
 
-            <button class="btn btn-primary btn-sm"
+            <button class="btn btn-warning btn-sm"
                     *ngIf="gameStarted===1"
                     (click)="onEndGame()">End Game</button>
 
@@ -71,8 +71,11 @@
 
 </div>
 <br>
-<div class="d-flex justify-content-center">
-    <button class="btn btn-primary btn-sm"
+<div class="d-flex justify-content-evenly">
+    <button class="btn btn-success btn-sm"
+            *ngIf="gameStarted"
+            (click)="onPrevHole()">Prev hole</button>
+    <button class="btn btn-success btn-sm"
             *ngIf="gameStarted"
             (click)="onNextHole()">Next hole</button>
 </div>
