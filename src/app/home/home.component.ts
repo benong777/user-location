@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+//-- Services
 import { DataService } from '../services/data.service';
+//-- Interfaces
+import { Players } from '../interface/players';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +14,12 @@ export class HomeComponent implements OnInit {
   constructor( private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.gameStarted = this.dataService.gameStarted;
+      //players: Players [] = this.dataService.players;
   }
 
+  players: Players [] = this.dataService.players;
+
+  currHole: number = this.dataService.currHole;
   gameStarted = this.dataService.gameStarted;
 
 }
