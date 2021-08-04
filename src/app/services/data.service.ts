@@ -27,28 +27,29 @@ export class DataService implements OnInit {
 
     // arrayOfZeros: number[] = [];
     arrayOfZeros: number[] = new Array(18).fill(0);
-    //players: Players[] = [];
-    players: Players[] =  [
-        {
-        name:  "Ben",
-        total:  1,
-        hole: this.arrayOfZeros 
-    },
-    {
-        name:  "Ben",
-        total:  1,
-        hole: this.arrayOfZeros 
-    },
-    {
-        name:  "Ben",
-        total:  1,
-        hole: this.arrayOfZeros 
-    },
-    {
-        name:  "Justin",
-        total:  2,
-        hole: this.arrayOfZeros 
-    } ] ;
+    players: Players[] = [];
+    // 
+    // players: Players[] =  [
+    //     {
+    //     name:  "Ben",
+    //     total:  1,
+    //     hole: this.arrayOfZeros 
+    // },
+    // {
+    //     name:  "Ben",
+    //     total:  1,
+    //     hole: this.arrayOfZeros 
+    // },
+    // {
+    //     name:  "Ben",
+    //     total:  1,
+    //     hole: this.arrayOfZeros 
+    // },
+    // {
+    //     name:  "Justin",
+    //     total:  2,
+    //     hole: this.arrayOfZeros 
+    // } ] ;
 
 
     addPlayer(playerName: string) {
@@ -75,6 +76,20 @@ export class DataService implements OnInit {
 
     increment(playerIndex: number) {
         this.players[playerIndex].total += 1;
-        this.players[playerIndex].hole[this.currHole] += 1;
+        this.players[playerIndex].hole[this.currHole-1] += 1;
+    }
+
+    decrement(playerIndex: number) {
+        if ((this.players[playerIndex].total>0 && this.players[playerIndex].hole[this.currHole-1]>0)) {
+            this.players[playerIndex].hole[this.currHole-1] -= 1;
+            this.players[playerIndex].total -= 1;
+          }
+    }
+
+    reset() {
+        this.players.splice(0, this.players.length);
+        this.gameStarted = 0;
+        this.gameEnded = 0;
+        this.currHole = 1;
     }
 }

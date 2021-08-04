@@ -47,7 +47,7 @@
         <div class="col-6 pt-1 pb-1"
              *ngIf="!gameEnded">{{ player.name }} ({{ player.total }})</div>
         <div class="col-2 text-center pt-1 pb-1 border"
-             *ngIf="!gameEnded">{{ player.hole[currHole] }}</div>
+             *ngIf="!gameEnded">{{ player.hole[currHole-1] }}</div>
         <div class="col-2"
              *ngIf="!gameEnded">
             <button class="btn btn-primary btn-sm"

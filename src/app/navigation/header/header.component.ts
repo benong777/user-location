@@ -6,8 +6,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  companyName: string = "Scoresheet";
-  game: string = "Game";
+  companyName: string = "Golf";
+  game: string = "Scoresheet";
 
   @Output() public sidenavToggle = new EventEmitter();
 
