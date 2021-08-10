@@ -7,28 +7,16 @@ import { Players } from "../interface/players";
 
 export class DataService implements OnInit {
     ngOnInit() {
-        // this.players.push(
-        //     {
-        //         name:  "Ben",
-        //         total:  2,
-        //         hole: this.arrayOfZeros 
-        //     },
-        //     {
-        //         name:  "Justin",
-        //         total:  2,
-        //         hole: this.arrayOfZeros 
-        //     }  
-        // );
     }
 
     currHole: number = 1;
     gameStarted: number = 0;
     gameEnded: number = 0;
 
-    // arrayOfZeros: number[] = [];
     arrayOfZeros: number[] = new Array(18).fill(0);
     players: Players[] = [];
-    // 
+
+    // //-- For testing 
     // players: Players[] =  [
     //     {
     //     name:  "Ben",
@@ -54,7 +42,6 @@ export class DataService implements OnInit {
 
     addPlayer(playerName: string) {
         this.arrayOfZeros = new Array(18).fill(0);
-        // console.log(this.arrayOfZeros);
         this.players.push({
             name:  playerName,
             total:  0,
@@ -84,6 +71,10 @@ export class DataService implements OnInit {
             this.players[playerIndex].hole[this.currHole-1] -= 1;
             this.players[playerIndex].total -= 1;
           }
+    }
+
+    deletePlayer(playerIndex: number) {
+        this.players.splice(playerIndex, 1);
     }
 
     reset() {

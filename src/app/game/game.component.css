@@ -1,0 +1,10 @@
+#playerNameInput {
+    width: 200px;
+}
+
+.circle-button {
+    border:1px solid;
+    border-radius:50%;
+    width:30px;
+    height:30px;
+    }

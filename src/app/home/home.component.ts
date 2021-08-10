@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   constructor( private dataService: DataService) { }
 
   ngOnInit(): void {
-      //players: Players [] = this.dataService.players;
   }
 
   players: Players [] = this.dataService.players;

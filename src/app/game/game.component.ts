@@ -67,15 +67,20 @@ export class GameComponent implements OnInit {
     this.players = this.dataService.players;
   }
 
+  onDeletePlayer(i: number) {
+    this.dataService.deletePlayer(i);
+    this.players = this.dataService.players;
+  }
+
   onNextHole() {
-    if (this.dataService.currHole >= 1 && this.dataService.currHole <17) {
+    if (this.dataService.currHole >= 1 && this.dataService.currHole <18) {
       this.currHole += 1;
       this.dataService.currHole = this.currHole;
     }
   }
 
   onPrevHole() {
-    if (this.dataService.currHole >= 1 && this.dataService.currHole <17) {
+    if (this.dataService.currHole > 1 && this.dataService.currHole <=18) {
       this.currHole -= 1;
       this.dataService.currHole = this.currHole;
     }

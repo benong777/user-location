@@ -1,10 +1,18 @@
-<!-- Add player -->
-<input  type="text"  class="form-control"
-        *ngIf="gameStarted===0"
-        placeholder="Name"
-        [(ngModel)]="newPlayerName">
-<br>
+<!-- <img src="../../assets/golf.jpg" alt="Golf course"> -->
+
+
 <div class="button-container">
+    <!-- Add player -->
+    <div class="row d-flex justify-content-center mt-3 mb-4">
+        <div class="col">
+        </div>
+        <input  type="text"  class="col form-control text-center" id="playerNameInput"
+                *ngIf="gameStarted===0"
+                placeholder="Name"
+                [(ngModel)]="newPlayerName">
+        <div class="col">
+        </div>
+    </div>
     <div class="row">
         <div class="col d-flex justify-content-evenly">
             <button class="btn btn-primary btn-sm"
@@ -44,21 +52,31 @@
 
     <div class="row d-flex align-items-center"
          *ngFor="let player of players; let i=index">
-        <div class="col-6 pt-1 pb-1"
-             *ngIf="!gameEnded">{{ player.name }} ({{ player.total }})</div>
-        <div class="col-2 text-center pt-1 pb-1 border"
-             *ngIf="!gameEnded">{{ player.hole[currHole-1] }}</div>
-        <div class="col-2"
-             *ngIf="!gameEnded">
-            <button class="btn btn-primary btn-sm"
-                    [disabled]="!gameStarted"
-                    (click)="onIncrement(i)">+</button>
+         <div class="col-2 d-flex justify-content-center"
+              *ngIf="!gameEnded">
+                <button class="btn btn-primary btn-sm"
+                        [disabled]="gameStarted"
+                        (click)="onDeletePlayer(i)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                        </svg>
+                </button>
         </div>
-        <div class="col-2"
+        <div class="col-4 pt-1 pb-1 text-center"
+             *ngIf="!gameEnded">{{ player.name }} ({{ player.total }})</div>
+        <div class="col-2 text-center pt-1 pb-1 border border-dark rounded"
+             *ngIf="!gameEnded">{{ player.hole[currHole-1] }}</div>
+        <div class="col-2 d-flex justify-content-center"
             *ngIf="!gameEnded">
-            <button class="btn btn-primary btn-sm"
+            <button class="btn circle-button btn-primary btn-sm"
                     [disabled]="!gameStarted"
                     (click)="onDecrement(i)">-</button>
+        </div>
+        <div class="col-2 d-flex justify-content-center"
+             *ngIf="!gameEnded">
+            <button class="btn circle-button btn-primary btn-sm"
+                    [disabled]="!gameStarted"
+                    (click)="onIncrement(i)">+</button>
         </div>
         <br><br><br>
 
@@ -71,7 +89,7 @@
 
 </div>
 <br>
-<div class="d-flex justify-content-evenly">
+<div class="d-flex justify-content-between">
     <button class="btn btn-success btn-sm"
             *ngIf="gameStarted"
             (click)="onPrevHole()">Prev hole</button>
