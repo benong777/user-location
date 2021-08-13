@@ -12,6 +12,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
+  numOfHoles = 9;
   currHole: number = 1;
   gameStarted: number = 0;
   gameEnded: number = 0;
@@ -51,10 +52,12 @@ export class GameComponent implements OnInit {
   }
 
   onReset() {
-    this.dataService.reset();
-    this.gameEnded = this.dataService.gameEnded;
-    this.gameStarted = this.dataService.gameStarted;
-    this.currHole = this.dataService.currHole;
+    if (confirm('All data will be deleted. Are you sure you want to continue?')) {
+      this.dataService.reset();
+      this.gameEnded = this.dataService.gameEnded;
+      this.gameStarted = this.dataService.gameStarted;
+      this.currHole = this.dataService.currHole;
+    }
   }
 
   onIncrement(i: number) {
@@ -84,6 +87,16 @@ export class GameComponent implements OnInit {
       this.currHole -= 1;
       this.dataService.currHole = this.currHole;
     }
+  }
+
+  onSelect9Holes() {
+    this.numOfHoles = 9;
+    console.log("9-Hole selected");
+  }
+
+  onSelect18Holes() {
+    this.numOfHoles = 18;
+    console.log("18-Hole selected");
   }
 
 }

@@ -17,6 +17,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { ProfileComponent } from './profile/profile.component';
 import { GameComponent } from './game/game.component';
 import { Players } from './interface/players';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { Players } from './interface/players';
     RoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

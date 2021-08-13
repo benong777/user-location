@@ -1,7 +1,40 @@
 <!-- <img src="../../assets/golf.jpg" alt="Golf course"> -->
 
-
 <div class="button-container">
+
+    <!-- Dropdown menu: Select # of Holes -->
+    <div class="row d-flex justify-content-center">
+        <div class="col-4 d-flex justify-content-center">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary btn-sm" id="dropdownBasic1" ngbDropdownToggle># of Holes</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem class="btn-sm"
+                            (click)="onSelect9Holes()">9-Hole</button>
+                    <button ngbDropdownItem class="btn-sm"
+                            (click)="onSelect18Holes()">18-Hole</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdown menu: Select golf course -->
+        <div class="col-4 d-flex justify-content-center">
+            <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-outline-primary btn-sm" id="dropdownBasic1" ngbDropdownToggle>Golf Course</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem class="btn-sm"
+                            (click)="onSelect9Holes()">Pruneridge - SJ</button>
+                    <button ngbDropdownItem class="btn-sm"
+                            (click)="onSelect18Holes()">Mission Hills of Hayward</button>
+                    <button ngbDropdownItem class="btn-sm"
+                            (click)="onSelect18Holes()">Monarch Bay - San Leandro</button>
+                    <button ngbDropdownItem class="btn-sm"
+                            (click)="onSelect18Holes()">Corica Park - Alameda</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
     <!-- Add player -->
     <div class="row d-flex justify-content-center mt-3 mb-4">
         <div class="col">
