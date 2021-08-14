@@ -76,7 +76,7 @@ export class GameComponent implements OnInit {
   }
 
   onNextHole() {
-    if (this.dataService.currHole >= 1 && this.dataService.currHole <18) {
+    if (this.dataService.currHole >= 1 && this.dataService.currHole < this.dataService.numOfHoles) {
       this.currHole += 1;
       this.dataService.currHole = this.currHole;
     }
