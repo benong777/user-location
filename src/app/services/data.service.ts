@@ -13,6 +13,10 @@ export class DataService implements OnInit {
     gameStarted: number = 0;
     gameEnded: number = 0;
 
+    numOfHoles: number = 9;
+    arrayOf9IncrementingNumbers = [1,2,3,4,5,6,7,8,9];
+    arrayOf18IncrementingNumbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+
     arrayOfZeros: number[] = new Array(18).fill(0);
     players: Players[] = [];
 

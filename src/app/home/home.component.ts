@@ -14,6 +14,9 @@ export class HomeComponent implements OnInit {
   constructor( private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.numOfHoles = this.dataService.numOfHoles;
+    this.arrayOf9IncrementingNumbers = this.dataService.arrayOf9IncrementingNumbers;
+    this.arrayOf18IncrementingNumbers = this.dataService.arrayOf18IncrementingNumbers;
   }
 
   players: Players [] = this.dataService.players;
@@ -21,4 +24,7 @@ export class HomeComponent implements OnInit {
   currHole: number = this.dataService.currHole;
   gameStarted = this.dataService.gameStarted;
 
+  numOfHoles: number = 0;
+  arrayOf9IncrementingNumbers: number [] = this.dataService.arrayOf9IncrementingNumbers;
+  arrayOf18IncrementingNumbers: number[] = this.dataService.arrayOf18IncrementingNumbers;
 }

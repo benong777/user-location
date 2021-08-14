@@ -90,13 +90,17 @@ export class GameComponent implements OnInit {
   }
 
   onSelect9Holes() {
-    this.numOfHoles = 9;
+    this.dataService.numOfHoles = 9;
     console.log("9-Hole selected");
   }
 
   onSelect18Holes() {
-    this.numOfHoles = 18;
+    this.dataService.numOfHoles = 18;
     console.log("18-Hole selected");
+  }
+
+  onSelectCourse() {
+    
   }
 
 }
