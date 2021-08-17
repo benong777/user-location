@@ -2,62 +2,74 @@
 <br><br><br><br>
 
 <!-- Table for 9-Hole -->
-<table class="table table-striped table-bordered table-sm border-primary text-center"
-    *ngIf="numOfHoles===9">
-    <thead>
-        <tr>
-            <th scope="col-2">Name</th>
-            <th scope="col-1"
-                *ngFor="let count of arrayOf9IncrementingNumbers">{{count}}</th>
-            <th scope="col-1">Total</th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-            <th scope="col-2"></th>
-            <th scope="col-1"
-                *ngFor="let distance of distances">{{ distance }}</th>
-            <th scope="col-1"></th>
-        </tr>
-    </thead>
+<div class=scoreTable>
+    <table class="table table-striped table-bordered table-sm border-primary text-center"
+        *ngIf="numOfHoles===9">
+        <thead>
+            <tr>
+                <th scope="col-2">Hole</th>
+                <th scope="col-1"
+                    *ngFor="let count of arrayOf9IncrementingNumbers">{{count}}</th>
+                <th scope="col-1">Total</th>
+            </tr>
+            <tr>
+                <th scope="col-2">Tee</th>
+                <th scope="col-1"
+                    *ngFor="let distance of distances">{{ distance }}</th>
+                <th scope="col-1"></th>
+            </tr>
+            <tr>
+                <th scope="col-2">Par</th>
+                <th scope="col-1"
+                    *ngFor="let par of parData">{{ par }}</th>
+                <th scope="col-1"></th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <!-- Players data -->
-        <tr *ngFor="let player of players; let i=index">
-            <th scope="row">{{ player.name }} ({{ player.total }})</th>
-            <td scope="col-1"
-                *ngFor="let count of arrayOf9IncrementingNumbers">{{ player.hole[count-1] }}</td>
-            <td scope="col-1">{{ player.total }}</td> 
-        </tr>
-    </tbody>
-</table>
+        <tbody>
+            <!-- Players data -->
+            <tr *ngFor="let player of players; let i=index">
+                <th scope="row">{{ player.name }} ({{ player.total }})</th>
+                <td scope="col-1"
+                    *ngFor="let count of arrayOf9IncrementingNumbers">{{ player.hole[count-1] }}</td>
+                <td scope="col-1">{{ player.total }}</td> 
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <!-- Table for 18-Hole -->
-<table class="table table-striped table-bordered table-sm border-primary text-center"
-       *ngIf="numOfHoles===18">
-    <thead>
-        <tr>
-            <th scope="col-2">Name</th>
-            <th scope="col-1"
-                *ngFor="let count of arrayOf18IncrementingNumbers">{{count}}</th>
-            <th scope="col-1">Total</th>
-        </tr>
-    </thead>
-    <thead>
-        <tr>
-            <th scope="col-2"></th>
-            <th scope="col-1"
-                *ngFor="let distance of distances">{{ distance }}</th>
-            <th scope="col-1"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let player of players; let i=index">
-            <th scope="row">{{ player.name }} ({{ player.total }})</th>
-            <td scope="col-1"
-                *ngFor="let count of arrayOf18IncrementingNumbers">{{ player.hole[count-1] }}</td>
-            <td scope="col-1">{{ player.total }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class=scoreTable>
+    <table class="table table-striped table-bordered table-sm border-primary text-center"
+        *ngIf="numOfHoles===18">
+        <thead>
+            <tr>
+                <th scope="col-2">Hole</th>
+                <th scope="col-1"
+                    *ngFor="let count of arrayOf18IncrementingNumbers">{{count}}</th>
+                <th scope="col-1">Total</th>
+            </tr>
+            <tr>
+                <th scope="col-2">Tee</th>
+                <th scope="col-1"
+                    *ngFor="let distance of distances">{{ distance }}</th>
+                <th scope="col-1"></th>
+            </tr>
+            <tr>
+                <th scope="col-2">Par</th>
+                <th scope="col-1"
+                    *ngFor="let par of parData">{{ par }}</th>
+                <th scope="col-1"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let player of players; let i=index">
+                <th scope="row">{{ player.name }} ({{ player.total }})</th>
+                <td scope="col-1"
+                    *ngFor="let count of arrayOf18IncrementingNumbers">{{ player.hole[count-1] }}</td>
+                <td scope="col-1">{{ player.total }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
             

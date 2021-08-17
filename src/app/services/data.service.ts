@@ -29,31 +29,31 @@ export class DataService implements OnInit {
         },
         { 
             name: 'Mission Hills',
-            distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
-            par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
-            distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+            distance9Hole: [ 102, 100, 100, 100, 100, 100, 100, 100, 109 ],
+            par9Hole: [ 2, 3, 3, 3, 3, 3, 3, 3, 9 ],
+            distance18Hole: [ 102, 100, 100, 100, 100, 100, 100, 100, 109,
                         110, 100, 100, 100, 100, 100, 100, 100, 118 ],
-            par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+            par18Hole: [ 2, 3, 3, 3, 3, 3, 3, 3, 9,
                     0, 3, 3, 3, 3, 3, 3, 3, 8 ],
             
         },
         { 
             name: 'Monarch Bay',
-            distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
-            par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
-            distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+            distance9Hole: [ 103, 100, 100, 100, 100, 100, 100, 100, 109 ],
+            par9Hole: [ 3, 3, 3, 3, 3, 3, 3, 3, 9 ],
+            distance18Hole: [ 103, 100, 100, 100, 100, 100, 100, 100, 109,
                         110, 100, 100, 100, 100, 100, 100, 100, 118 ],
-            par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+            par18Hole: [ 3, 3, 3, 3, 3, 3, 3, 3, 9,
                     0, 3, 3, 3, 3, 3, 3, 3, 8 ],
             
         },
         { 
             name: 'Corica Park',
-            distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
-            par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
-            distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+            distance9Hole: [ 104, 100, 100, 100, 100, 100, 100, 100, 109 ],
+            par9Hole: [ 4, 3, 3, 3, 3, 3, 3, 3, 9 ],
+            distance18Hole: [ 104, 100, 100, 100, 100, 100, 100, 100, 109,
                         110, 100, 100, 100, 100, 100, 100, 100, 118 ],
-            par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+            par18Hole: [ 4, 3, 3, 3, 3, 3, 3, 3, 9,
                     0, 3, 3, 3, 3, 3, 3, 3, 8 ],
         }
     ];
@@ -76,6 +76,7 @@ export class DataService implements OnInit {
     players: Players[] = [];
 
     distances: number[] = this.courses[0].distance9Hole;
+    parData: number[] = this.courses[0].par9Hole;
 
 
     addPlayer(playerName: string) {
@@ -129,22 +130,56 @@ export class DataService implements OnInit {
 
     selectCourse(selectedCourse: string) {
         this.selectedCourse = selectedCourse;
-        if (selectedCourse==='Golf Course') {
-            if (this.numOfHoles===9) {
-                this.distances = this.courses[0].distance9Hole;
-            } else {
-                this.distances = this.courses[0].distance18Hole;
-            }
-        }
-        if (selectedCourse==='Pruneridge') {
-            //this.distances = this.courses[1].distance9Hole;
-            console.log("Pruneridge Selected");
 
-            if (this.numOfHoles===9) {
-                this.distances = this.courses[1].distance9Hole;
-            } else {
-                this.distances = this.courses[1].distance18Hole;
-            }
+        switch(selectedCourse) {
+            case 'Pruneridge':
+                if (this.numOfHoles===9) {
+                    this.parData = this.courses[1].par9Hole;
+                    this.distances = this.courses[1].distance9Hole;
+                } else {
+                    this.parData = this.courses[1].par18Hole;
+                    this.distances = this.courses[1].distance18Hole;
+                }
+                break;
+
+            case 'Mission Hills':
+                if (this.numOfHoles===9) {
+                    this.parData = this.courses[2].par9Hole;
+                    this.distances = this.courses[2].distance9Hole;
+                } else {
+                    this.parData = this.courses[2].par18Hole;
+                    this.distances = this.courses[2].distance18Hole;
+                }
+                break;
+
+            case 'Monarch Bay':
+                if (this.numOfHoles===9) {
+                    this.parData = this.courses[3].par9Hole;
+                    this.distances = this.courses[3].distance9Hole;
+                } else {
+                    this.parData = this.courses[3].par18Hole;
+                    this.distances = this.courses[3].distance18Hole;
+                }
+                break;
+                
+            case 'Corica Park':
+                if (this.numOfHoles===9) {
+                    this.parData = this.courses[4].par9Hole;
+                    this.distances = this.courses[4].distance9Hole;
+                } else {
+                    this.parData = this.courses[4].par18Hole;
+                    this.distances = this.courses[4].distance18Hole;
+                }
+                break;
+
+            default:    // 'Golf Course'
+                if (this.numOfHoles===9) {
+                    this.parData = this.courses[0].par9Hole;
+                    this.distances = this.courses[0].distance9Hole;
+                } else {
+                    this.parData = this.courses[0].par18Hole;
+                    this.distances = this.courses[0].distance18Hole;
+                }
         }
     }
 }
