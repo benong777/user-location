@@ -12,7 +12,7 @@ import { resetFakeAsyncZone } from '@angular/core/testing';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  numOfHoles = 9;
+  numOfHoles = this.dataService.numOfHoles;
   currHole: number = 1;
   gameStarted: number = 0;
   gameEnded: number = 0;
@@ -20,12 +20,12 @@ export class GameComponent implements OnInit {
   players: Players[] = [];
   arrayOfZeros: number[] = [];
 
+  selectedCourse: string = this.dataService.selectedCourse;
+
   constructor( private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.currHole = this.dataService.currHole;
     this.gameStarted = this.dataService.gameStarted;
-
     this.players = this.dataService.players;
   }
 
@@ -89,18 +89,15 @@ export class GameComponent implements OnInit {
     }
   }
 
-  onSelect9Holes() {
-    this.dataService.numOfHoles = 9;
-    console.log("9-Hole selected");
+  onSelectNumOfHoles(selectedNumOfHoles: number) {
+    this.numOfHoles = selectedNumOfHoles;
+    this.dataService.selectNumOfHoles(selectedNumOfHoles);
+    console.log(selectedNumOfHoles + "-Hole selected");
   }
 
-  onSelect18Holes() {
-    this.dataService.numOfHoles = 18;
-    console.log("18-Hole selected");
-  }
-
-  onSelectCourse() {
-    
+  onSelectCourse(selectedCourse: string) {
+    this.selectedCourse = selectedCourse;
+    this.dataService.selectCourse(selectedCourse);
   }
 
 }

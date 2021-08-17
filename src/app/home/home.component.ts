@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   }
 
   players: Players [] = this.dataService.players;
+  selectedCourseIndex: number = 0; 
+  distances: number [] = this.dataService.distances;
 
   currHole: number = this.dataService.currHole;
   gameStarted = this.dataService.gameStarted;

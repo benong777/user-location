@@ -6,8 +6,63 @@ import { Players } from "../interface/players";
 @Injectable()
 
 export class DataService implements OnInit {
+    //-- Course data (fixed!)
+    courses = [
+        { 
+            name: 'Golf Course',
+            distance9Hole: [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            par9Hole: [ 3, 3, 3, 3, 3, 3, 3, 3, 3 ],
+            distance18Hole: [ 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+            par18Hole: [ 3, 3, 3, 3, 3, 3, 3, 3, 3,
+                   3, 3, 3, 3, 3, 3, 3, 3, 3 ],
+            
+        },
+        { 
+          name: 'Pruneridge',
+          distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
+          par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
+          distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+                      110, 100, 100, 100, 100, 100, 100, 100, 118 ],
+          par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+                 0, 3, 3, 3, 3, 3, 3, 3, 8 ],
+        },
+        { 
+            name: 'Mission Hills',
+            distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
+            par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
+            distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+                        110, 100, 100, 100, 100, 100, 100, 100, 118 ],
+            par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+                    0, 3, 3, 3, 3, 3, 3, 3, 8 ],
+            
+        },
+        { 
+            name: 'Monarch Bay',
+            distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
+            par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
+            distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+                        110, 100, 100, 100, 100, 100, 100, 100, 118 ],
+            par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+                    0, 3, 3, 3, 3, 3, 3, 3, 8 ],
+            
+        },
+        { 
+            name: 'Corica Park',
+            distance9Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109 ],
+            par9Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9 ],
+            distance18Hole: [ 101, 100, 100, 100, 100, 100, 100, 100, 109,
+                        110, 100, 100, 100, 100, 100, 100, 100, 118 ],
+            par18Hole: [ 1, 3, 3, 3, 3, 3, 3, 3, 9,
+                    0, 3, 3, 3, 3, 3, 3, 3, 8 ],
+        }
+    ];
+
     ngOnInit() {
     }
+
+    selectedCourse: string = 'Golf Course';
+    selectedCourseIndex: number = 0;
 
     currHole: number = 1;
     gameStarted: number = 0;
@@ -20,28 +75,7 @@ export class DataService implements OnInit {
     arrayOfZeros: number[] = new Array(18).fill(0);
     players: Players[] = [];
 
-    // //-- For testing 
-    // players: Players[] =  [
-    //     {
-    //     name:  "Ben",
-    //     total:  1,
-    //     hole: this.arrayOfZeros 
-    // },
-    // {
-    //     name:  "Ben",
-    //     total:  1,
-    //     hole: this.arrayOfZeros 
-    // },
-    // {
-    //     name:  "Ben",
-    //     total:  1,
-    //     hole: this.arrayOfZeros 
-    // },
-    // {
-    //     name:  "Justin",
-    //     total:  2,
-    //     hole: this.arrayOfZeros 
-    // } ] ;
+    distances: number[] = this.courses[0].distance9Hole;
 
 
     addPlayer(playerName: string) {
@@ -86,5 +120,31 @@ export class DataService implements OnInit {
         this.gameStarted = 0;
         this.gameEnded = 0;
         this.currHole = 1;
+    }
+
+    selectNumOfHoles(selectedNumOfHoles: number) {
+        this.numOfHoles = selectedNumOfHoles;
+        this.selectCourse(this.selectedCourse);
+    }
+
+    selectCourse(selectedCourse: string) {
+        this.selectedCourse = selectedCourse;
+        if (selectedCourse==='Golf Course') {
+            if (this.numOfHoles===9) {
+                this.distances = this.courses[0].distance9Hole;
+            } else {
+                this.distances = this.courses[0].distance18Hole;
+            }
+        }
+        if (selectedCourse==='Pruneridge') {
+            //this.distances = this.courses[1].distance9Hole;
+            console.log("Pruneridge Selected");
+
+            if (this.numOfHoles===9) {
+                this.distances = this.courses[1].distance9Hole;
+            } else {
+                this.distances = this.courses[1].distance18Hole;
+            }
+        }
     }
 }
